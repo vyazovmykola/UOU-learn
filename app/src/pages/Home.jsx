@@ -1,29 +1,28 @@
-import './Home.css'
-import { Link } from 'react-router-dom';
-import Cookies from 'js-cookie';
+// src/pages/Home.jsx
+
+import { Link } from "react-router-dom";
 
 const lessons = [
-  { id: 'greetings', title: 'Greetings' },
-  { id: 'numbers', title: 'Numbers' },
+  { id: 1, name: "Lesson 1" },
+  { id: 2, name: "Lesson 2" },
 ];
 
 export default function Home() {
-  const completedLessons = JSON.parse(Cookies.get('completedLessons') || '[]');
-
   return (
-    <div className="p-4 grid gap-4">
-      {lessons.map(lesson => (
-        <Link
-          key={lesson.id}
-          to={`/lesson/${lesson.id}`}
-          className="p-4 border rounded-xl shadow hover:scale-105 transition"
-        >
-          <div className="text-xl">{lesson.title}</div>
-          {completedLessons.includes(lesson.id) && (
-            <div className="text-green-500 mt-1">✅ Completed</div>
-          )}
-        </Link>
-      ))}
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">Select a Lesson</h1>
+      <ul className="space-y-2">
+        {lessons.map((lesson) => (
+          <li key={lesson.id}>
+            <Link
+              to={`/lesson/${lesson.id}`}
+              className="text-blue-600 hover:underline"
+            >
+              {lesson.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
