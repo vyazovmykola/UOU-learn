@@ -1,5 +1,4 @@
-// src/pages/Home.jsx
-
+import './Home.css';
 import { Link } from "react-router-dom";
 
 const lessons = [
@@ -10,8 +9,7 @@ const lessons = [
 export default function Home() {
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Select a Lesson</h1>
-      <ul className="space-y-2">
+      
         {lessons.map((lesson) => (
           <li key={lesson.id}>
             <Link
@@ -22,7 +20,7 @@ export default function Home() {
             </Link>
           </li>
         ))}
-      </ul>
+      
     </div>
   );
 }
